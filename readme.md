@@ -5,7 +5,7 @@ API para marketplace de cosméticos, produtos de beleza e de higiêne. Escrita n
 ## Rodando localmente
 1. Clone o repositório 
 ```bash
-git clone https://github.com/dev-gsilv/futurabeutyhubapi
+git clone https://github.com/Leopagoti/Marketplace-.git
 ```
 2. Instale as dependências
 ```bash
