@@ -1,16 +1,27 @@
-const env = require('dotenv/config');
-const mongoose = require('mongoose');
+function manipularArray(arr: any[]): void {
+    // Verificar se o array está vazio
+    if (arr.length === 0) {
+        console.log("O array está vazio.");
+        return;
+    }
 
-const dbUser = process.env.DB_USER;
-const dbPass = process.env.DB_PASS;
-const dominioCluster = process.env.DOMINIO_CLUSTER;
+    // Verificar o tipo de cada posição e realizar as operações correspondentes
+    for (let i = 0; i < arr.length; i++) {
+        const elemento = arr[i];
+        if (typeof elemento === 'number') {
+            arr[i] = elemento * Math.floor(Math.random() * 10) + 1; // Multiplica por um número aleatório entre 1 e 10
+        } else if (typeof elemento === 'string') {
+            arr[i] = elemento.split('').reverse().join(''); // Inverte a string
+        } else if (typeof elemento === 'boolean') {
+            arr[i] = true; // Transforma em verdadeiro
+        }
+        // Caso for de qualquer outro tipo, não fazer nada
+    }
 
-async function conn() {
-    await mongoose
-        .connect(
-            `mongodb+srv://${dbUser}:${dbPass}@${dominioCluster}/?retryWrites=true&w=majority`,
-        )
-        .catch(e => console.error(e));
+    // Imprimir os valores do array na ordem invertida
+    console.log("Array após manipulação:", arr.reverse());
 }
 
-module.exports = conn;
+// Exemplo de uso
+const meuArray: (number | string | boolean)[] = [1, "hello", true, 42];
+manipularArray(meuArray);
